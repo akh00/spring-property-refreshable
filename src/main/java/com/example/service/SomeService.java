@@ -15,7 +15,7 @@ public class SomeService
         if(someProperties.isSomeProperty()) {
             System.out.println("Doing something");
         } else {
-            System.out.println("Do nothing");
+            System.out.println("Doing nothing");
         }
     }
 }

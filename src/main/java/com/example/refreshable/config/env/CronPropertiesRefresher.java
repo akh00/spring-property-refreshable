@@ -25,13 +25,7 @@ public class CronPropertiesRefresher
             initialDelayString = "${cron.properties.refresher.initialDelay:5000}")
     public void refreshPropertiesAndBeans() {
         List<String> updatedProperties = new ArrayList<>();
-        providers.forEach(provider -> {
-            try {
-                updatedProperties.addAll(source.refresh(provider.getProperties()));
-            } catch (IOException e) {
-                LOGGER.info("Can not load properties from provider {}", provider, e);
-            }
-        });
+        providers.forEach(provider -> updatedProperties.addAll(source.refresh(provider.getProperties())));
         if(!updatedProperties.isEmpty()) {
             refreshScopeBean.refreshAll(); //theoretically here we can find only required beans to refresh
         }

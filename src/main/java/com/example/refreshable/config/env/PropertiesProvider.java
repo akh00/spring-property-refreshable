@@ -5,5 +5,5 @@ import java.util.Map;
 
 public interface PropertiesProvider
 {
-    Map<String, Object> getProperties() throws IOException;
+    Map<String, Object> getProperties();
 }

@@ -1,7 +1,5 @@
 package com.example.refreshable.config.env;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -24,12 +22,7 @@ public class RefreshablePropertiesPostProcessor implements EnvironmentPostProces
         String refreshFilePathStr = environment.getProperty("property-provider.file.path");
         RefreshFilePropertyProvider filePropertyProvider = new RefreshFilePropertyProvider(
                 refreshFilePathStr == null ? "config/refresh.properties" : refreshFilePathStr);
-        try {
-            source.refresh(filePropertyProvider.getProperties());
-        } catch (IOException e) {
-            //resume app if could not read properties.
-            LOGGER.info("Can not load properties from file", e);
-        }
+        source.refresh(filePropertyProvider.getProperties());
         environment.getPropertySources()
                 .addBefore(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, source);
 
