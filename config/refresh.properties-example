@@ -1,0 +1,3 @@
+app.example.properties.someProperty=false
+app.example.properties.somePropertyPercent=20
+
